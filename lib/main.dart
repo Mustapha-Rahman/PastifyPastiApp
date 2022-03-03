@@ -1,18 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 import 'package:pastify/screens/landingpage.dart';
 
 
 import 'package:sizer/sizer.dart';
-
-
-
-
-
-
-
-
-
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -33,6 +25,8 @@ class Pastify extends StatefulWidget {
 class _PastifyState extends State<Pastify> {
 
 
+
+
   @override
   Widget build(BuildContext context) {
     return Sizer(builder: (context, orientation, deviceType){
@@ -47,7 +41,7 @@ class _PastifyState extends State<Pastify> {
 
 
 
-          home: LandingPage()
+          home:LandingPage()
       );
     });
   }

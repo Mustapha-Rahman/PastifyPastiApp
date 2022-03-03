@@ -37,129 +37,153 @@ class _UmatRegistrationState extends State<UmatRegistration> {
   Widget build(BuildContext context) {
     return Sizer(builder: (context, orientation, deviceType) {
       return Scaffold(
-          body: FutureBuilder(
+          body: SafeArea(
+            child: FutureBuilder(
         future: _umatregistration.get(),
         builder: (context, snapshot) {
-          if (snapshot.hasError) {
-            return Text('${snapshot.error}');
-          }
+            if (snapshot.hasError) {
+              return Text('${snapshot.error}');
+            }
 
-          if (snapshot.connectionState == ConnectionState.done) {
-            return ListView(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Container(
-                    height: 60.h,
-                    width: 100.w,
-                    decoration: BoxDecoration(
-                        gradient: const LinearGradient(
-                            colors: [Colors.pinkAccent, Colors.blue]),
-                        borderRadius: BorderRadius.circular(20)),
-                    child: ListView(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(top: 8.0, left: 3, right: 3),
-                          child: Container(
-                            decoration: BoxDecoration(
-                                color: Colors.lightBlueAccent,
-                                borderRadius: BorderRadius.circular(10)),
-                            child: TextField(
-                              textInputAction: TextInputAction.next,
-                              controller: _controller,
-                              decoration:
-                                  const InputDecoration(hintText: 'Players Name'),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(
-                              top: 8.0, bottom: 8.0, left: 2, right: 2),
-                          child: Container(
-                            decoration: BoxDecoration(
-                                color: Colors.lightBlueAccent,
-                                borderRadius: BorderRadius.circular(10)),
-                            child: TextField(
-                              textInputAction: TextInputAction.next,
-                              controller: _controllerPhoneNumberUmat,
-                              decoration: const InputDecoration(
-                                  hintText: 'Phone Number',
-                                  border: InputBorder.none),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 3.0, right: 3.0),
-                          child: Container(
-                            decoration: BoxDecoration(
-                                color: Colors.lightBlueAccent,
-                                borderRadius: BorderRadius.circular(10)),
-                            child: TextField(
-                              textInputAction: TextInputAction.next,
-                              controller: _controllerResidentUmat,
-                              decoration: const InputDecoration(
-                                  hintText: 'Hostel/Halls Name/Resident',
-                                  border: InputBorder.none),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(
-                              top: 8.0, left: 3, right: 3),
-                          child: Container(
-                            decoration: BoxDecoration(
-                                color: Colors.lightBlueAccent,
-                                borderRadius: BorderRadius.circular(10)),
-                            child: TextField(
-                              textInputAction: TextInputAction.next,
-                              controller: _controllerClubNameUmat,
-                              decoration:
-                                  const InputDecoration(hintText: 'Club Name'),
-                            ),
-                          ),
-                        ),
+            if (snapshot.connectionState == ConnectionState.done) {
+              return SingleChildScrollView(
+                child: Column(
+                  children: [
 
-                        const Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: Text(
-                              'Please Check whether the club has been registered here!!'),
-                        ),
-
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: ElevatedButton(
-                            child: const Text('REGISTERED TEAMS'),
-                            onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => UmatRegisteredTeams()));
-                            },
-                          ),
-                        ),
-
-                      ],
+                    CircleAvatar(
+                      radius: 10.h,
+                      backgroundImage: AssetImage("assets/images/koking.jpg"),
                     ),
-                  ),
+                    SizedBox(
+                      height: 20
+                    ),
+
+                    Container(
+                      height: 270,
+                      width: 80.w,
+                      decoration: BoxDecoration(
+                        color: Colors.white
+                      ),
+                      child: ListView(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(top: 8.0, left: 3, right: 3),
+                            child: Center(
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    border: Border.all(
+                                        color: Colors.black
+                                    ),
+                                    borderRadius: BorderRadius.circular(10)),
+                                child: TextField(
+                                  textInputAction: TextInputAction.next,
+                                  controller: _controller,
+                                  decoration:
+                                  const InputDecoration(hintText: 'Players Name'),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                top: 8.0, bottom: 8.0, left: 2, right: 2),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  border: Border.all(
+                                      color: Colors.black
+                                  ),
+                                  borderRadius: BorderRadius.circular(10)),
+                              child: TextField(
+                                textInputAction: TextInputAction.next,
+                                controller: _controllerPhoneNumberUmat,
+                                decoration: const InputDecoration(
+                                    hintText: 'Phone Number',
+                                    border: InputBorder.none),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 3.0, right: 3.0),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  border: Border.all(
+                                      color: Colors.black
+                                  ),
+                                  borderRadius: BorderRadius.circular(10)),
+                              child: TextField(
+                                textInputAction: TextInputAction.next,
+                                controller: _controllerResidentUmat,
+                                decoration: const InputDecoration(
+                                    hintText: 'Hostel/Halls Name/Resident',
+                                    border: InputBorder.none),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                top: 8.0, left: 3, right: 3),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  border: Border.all(
+                                      color: Colors.black
+                                  ),
+                                  borderRadius: BorderRadius.circular(10)),
+                              child: TextField(
+                                textInputAction: TextInputAction.next,
+                                controller: _controllerClubNameUmat,
+                                decoration:
+                                const InputDecoration(hintText: 'Club Name'),
+                              ),
+                            ),
+                          ),
+
+                        ],
+                      ),
+                    ),
+
+
+
+
+
+                    const Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Text(
+                          'Please Check whether the club has been registered here!!', style: TextStyle(),),
+                    ),
+
+                    ElevatedButton(
+                      child: const Text('REGISTERED TEAMS'),
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => UmatRegisteredTeams()));
+                      },
+                    ),
+
+
+                    ElevatedButton(
+                        onPressed: () {
+                          _umatChampionsLeagueRegistration();
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => AkwaabaRegistrationDone()));
+                        },
+                        child: const Text('Submit'))
+                  ],
                 ),
+              );
+            }
 
-
-                ElevatedButton(
-                    onPressed: () {
-                      _umatChampionsLeagueRegistration();
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => AkwaabaRegistrationDone()));
-                    },
-                    child: const Text('Submit'))
-              ],
-            );
-          }
-
-          return const Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
         },
-      ));
+      ),
+          ));
     });
   }
 }

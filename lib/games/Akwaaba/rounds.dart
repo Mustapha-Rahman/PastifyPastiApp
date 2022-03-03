@@ -55,8 +55,8 @@ class R1 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Sizer(builder: (context, orientation,deviceType){
       return Scaffold(
-          body: SingleChildScrollView(
-            child: Container(
+          body: Container(
+            child: SingleChildScrollView(
               child: Column(
                 children: [
                   Padding(

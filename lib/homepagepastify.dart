@@ -26,11 +26,13 @@ class HomePagePastify extends StatelessWidget {
 
         appBar: AppBar(
           elevation: 0.0,
-          backgroundColor: Colors.white60,
+          backgroundColor: Colors.blue,
             title: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text('Pastify'),
+                const Text('Pastify', style: TextStyle(
+                  color: Colors.white
+                ),),
                 GestureDetector(
                     onTap: () {
                       Navigator.push(
@@ -96,7 +98,7 @@ class HomePagePastify extends StatelessWidget {
             height: 100.h,
             decoration: const BoxDecoration(
               gradient: LinearGradient(
-                colors: [Colors.black87, Colors.white60]
+                colors: [Colors.white, Colors.white]
               )
             ),
             child: SafeArea(
@@ -128,7 +130,7 @@ class HomePagePastify extends StatelessWidget {
                                 width: 160.0,
                                 height: 180.0,
                                 child: Card(
-                                  color: Colors.lightBlueAccent,
+                                  color: Colors.white,
                                   child: Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: Column(
@@ -154,7 +156,7 @@ class HomePagePastify extends StatelessWidget {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => const HomePageGames()));
+                                        builder: (context) => HomePageGames()));
                               },
                             ),
                             GestureDetector(
@@ -162,7 +164,7 @@ class HomePagePastify extends StatelessWidget {
                                 width: 160.0,
                                 height: 180.0,
                                 child: Card(
-                                  color: Colors.lightBlueAccent,
+                                  color: Colors.white,
                                   child: Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: Column(
@@ -196,7 +198,7 @@ class HomePagePastify extends StatelessWidget {
                                 width: 160.0,
                                 height: 180.0,
                                 child: Card(
-                                  color: Colors.lightBlueAccent,
+                                  color: Colors.white,
                                   child: Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: Column(
@@ -221,8 +223,10 @@ class HomePagePastify extends StatelessWidget {
                               onTap: () {
                                 Navigator.push(
                                     context,
+
                                     MaterialPageRoute(
-                                        builder: (context) => HomePageVibes()));
+                                        builder: (context) =>HomePageVibes()
+                                    ));
                               },
                             ),
                             GestureDetector(
@@ -230,7 +234,7 @@ class HomePagePastify extends StatelessWidget {
                                 width: 160.0,
                                 height: 180.0,
                                 child: Card(
-                                  color: Colors.lightBlueAccent,
+                                  color: Colors.white,
                                   child: Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: Column(

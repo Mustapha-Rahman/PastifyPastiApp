@@ -42,7 +42,7 @@ class ContactsUs extends StatelessWidget {
 
                   GestureDetector(
                     child: Container(
-                        height: 9.h,
+                        height: 70,
                         width:100.w,
                         decoration: BoxDecoration(
                           color: Colors.grey[200],
@@ -50,7 +50,9 @@ class ContactsUs extends StatelessWidget {
                         ),
                         child: Row(
                           children: [
-                            const Icon(Icons.contact_mail, size: 50,),
+                            CircleAvatar(
+                              child: Icon(Icons.phone, size: 30,),
+                            ),
                             const Text('Contact Us On +233 551597865'),
                           ],
                         )
@@ -62,7 +64,7 @@ class ContactsUs extends StatelessWidget {
                     child: GestureDetector(
                       onTap: _gmailURL,
                       child: Container(
-                          height:9.h,
+                          height:70,
                           width: 100.w,
                           decoration: BoxDecoration(
                             color: Colors.grey[200],
@@ -72,19 +74,14 @@ class ContactsUs extends StatelessWidget {
                             scrollDirection: Axis.horizontal,
                             child: Row(
                               children: [
-                                Container(
-                                  height: 6.h,
-                                  width: 100,
-                                  decoration: const BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: Colors.red,
-                                      image: DecorationImage(
-                                          image: AssetImage('assets/images/gmailgmail.png'),
-                                          fit: BoxFit.fill
-                                      )
-                                  ),
+                               CircleAvatar(
+                                 radius: 30,
+                                 backgroundImage: AssetImage('assets/images/gmailgmail.png'),
+                               ),
+                                Padding(
+                                  padding: const EdgeInsets.only(left:8.0),
+                                  child: const Text('mustaphaabdulrahman0245@gmail.com'),
                                 ),
-                                const Text('pastifycommunity0245@gmail.com'),
                               ],
                             ),
                           )
@@ -95,7 +92,7 @@ class ContactsUs extends StatelessWidget {
                   GestureDetector(
                     onTap: _tiktokURL,
                     child: Container(
-                      height: 9.h,
+                      height: 70,
                       width: double.infinity,
                       decoration: BoxDecoration(
                         color: Colors.grey[200],
@@ -103,19 +100,14 @@ class ContactsUs extends StatelessWidget {
                       ),
                       child: Row(
                         children: [
-                          Container(
-                            height: 50,
-                            width: 100,
-                            decoration: const BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Colors.red,
-                              image: DecorationImage(
-                                image: AssetImage('assets/images/download.jfif'),
-                                fit: BoxFit.fill
-                              )
-                            ),
+                          CircleAvatar(
+                            radius: 30,
+                            backgroundImage: AssetImage('assets/images/download.jfif'),
                           ),
-                          const Text('TikTok'),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 8.0),
+                            child: const Text('TikTok'),
+                          ),
                         ],
                       )
                     ),
@@ -126,7 +118,7 @@ class ContactsUs extends StatelessWidget {
                     child: GestureDetector(
                       onTap: _whatsappURL,
                       child: Container(
-                          height: 9.h,
+                          height: 70,
                           width: double.infinity,
                           decoration: BoxDecoration(
                             color: Colors.grey[200],
@@ -134,19 +126,15 @@ class ContactsUs extends StatelessWidget {
                           ),
                           child: Row(
                             children: [
-                              Container(
-                                height: 50,
-                                width: 100,
-                                decoration: const BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color: Colors.red,
-                                    image: DecorationImage(
-                                        image: AssetImage('assets/images/whatsapp.jpg'),
-                                        fit: BoxFit.fill
-                                    )
-                                ),
+                              CircleAvatar(
+                                radius: 30,
+                                backgroundImage: AssetImage('assets/images/whatsapp.jpg'),
+
                               ),
-                              const Text('Whatsapp'),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 8.0),
+                                child: Text("Whatsapp"),
+                              )
                             ],
                           )
                       ),
@@ -162,20 +150,15 @@ class ContactsUs extends StatelessWidget {
           )
       );
     });
-
-
   }
 
   void _tiktokURL() async {
     if (!await launch(_tiktok)) throw 'Could not launch $_tiktok';
   }
 
-
   void _gmailURL() async {
     if (!await launch(_gmail)) throw 'Could not launch $_gmail';
   }
-
-
 
   void _whatsappURL() async {
     if (!await launch(_whatsapp)) throw 'Could not launch $_whatsapp';
