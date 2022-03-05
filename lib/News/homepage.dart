@@ -1,7 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
+import '../ad_state.dart';
 import 'details.dart';
 
 class NewsHomePage extends StatefulWidget {
@@ -24,11 +27,48 @@ class _NewsHomePageState extends State<NewsHomePage> {
   final CollectionReference _loading =
   FirebaseFirestore.instance.collection('Loading');
 
+  late BannerAd banner;
+  @override
+  void didChangeDependencies(){
+    super.didChangeDependencies();
+    final adState = Provider.of<AdState>(context);
+    adState.initialization.then((status){
+      setState(() {
+        banner = BannerAd(
+          request:AdRequest(),
+          adUnitId: adState.bannerAdUnitId,
+          size: AdSize.banner,
+          listener: adState.listener,
+        )..load();
+      });
+    });
+  }
+
 
   @override
   Widget build(BuildContext context) {
     return Sizer(builder: (context, orientation, deviceType){
       return Scaffold(
+        extendBodyBehindAppBar: true,
+        bottomNavigationBar: Container(
+          height: 70,
+          child: AdWidget(ad: banner,),
+
+        ),
+
+          appBar: AppBar(
+            backgroundColor: Colors.blue,
+            elevation: 0.0,
+            title: Row(
+              children: [
+                CircleAvatar(
+                  backgroundImage: AssetImage("assets/images/logoo.png"),
+                ),
+
+                Text("Pastify Facts")
+              ],
+            ),
+          ),
 
 
           body: SafeArea(
@@ -46,24 +86,7 @@ class _NewsHomePageState extends State<NewsHomePage> {
                       return Column(
                         children: [
 
-                          Row(
-                            children: [
 
-                              Container(
-                                height: 50,
-                                width: 20.w,
-                                decoration: const BoxDecoration(
-                                  color: Colors.blueAccent,
-                                  shape: BoxShape.circle,
-                                  image: DecorationImage(
-                                    image: AssetImage('assets/images/logoo.png'),
-                                    fit: BoxFit.fill
-                                  )
-                                ),
-                              ),
-                              const Text('Pastify Facts')
-                            ],
-                          ),
 
                           const Text('Popular Facts', style: TextStyle(
                             fontWeight: FontWeight.bold

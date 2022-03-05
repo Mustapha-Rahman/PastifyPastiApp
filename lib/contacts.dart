@@ -21,130 +21,124 @@ class ContactsUs extends StatelessWidget {
           backgroundColor: Colors.white,
 
           body: SafeArea(
-            child: Container(
-              child: Column(
-                children: [
-                  Container(
-                    height: 30.h,
-                    width: 40.w,
-                    decoration: const BoxDecoration(
-                        color: Colors.red,
-                        image: DecorationImage(
-                          image: const AssetImage(""
+            child: SingleChildScrollView(
+              child: Container(
+                child: Column(
+                  children: [
+                    CircleAvatar(
+                      radius: 10.h,
+                      backgroundImage: AssetImage("assets/images/logoo.png"),
 
-                          ),
-                          fit: BoxFit.fill,
 
-                        )
                     ),
-                  ),
 
 
-                  GestureDetector(
-                    child: Container(
-                        height: 70,
-                        width:100.w,
-                        decoration: BoxDecoration(
-                          color: Colors.grey[200],
-                          borderRadius: BorderRadius.circular(10)
-                        ),
-                        child: Row(
-                          children: [
-                            CircleAvatar(
-                              child: Icon(Icons.phone, size: 30,),
-                            ),
-                            const Text('Contact Us On +233 551597865'),
-                          ],
-                        )
-                    ),
-                  ),
-
-                  Padding(
-                    padding: const EdgeInsets.only(top: 8.0, bottom: 8.00),
-                    child: GestureDetector(
-                      onTap: _gmailURL,
-                      child: Container(
-                          height:70,
-                          width: 100.w,
-                          decoration: BoxDecoration(
-                            color: Colors.grey[200],
-                              borderRadius: BorderRadius.circular(10)
-                          ),
-                          child: SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
-                            child: Row(
-                              children: [
-                               CircleAvatar(
-                                 radius: 30,
-                                 backgroundImage: AssetImage('assets/images/gmailgmail.png'),
-                               ),
-                                Padding(
-                                  padding: const EdgeInsets.only(left:8.0),
-                                  child: const Text('mustaphaabdulrahman0245@gmail.com'),
-                                ),
-                              ],
-                            ),
-                          )
-                      ),
-                    ),
-                  ),
-
-                  GestureDetector(
-                    onTap: _tiktokURL,
-                    child: Container(
-                      height: 70,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        color: Colors.grey[200],
-                          borderRadius: BorderRadius.circular(10)
-                      ),
-                      child: Row(
-                        children: [
-                          CircleAvatar(
-                            radius: 30,
-                            backgroundImage: AssetImage('assets/images/download.jfif'),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 8.0),
-                            child: const Text('TikTok'),
-                          ),
-                        ],
-                      )
-                    ),
-                  ),
-
-                  Padding(
-                    padding: const EdgeInsets.only(top: 8.0),
-                    child: GestureDetector(
-                      onTap: _whatsappURL,
+                    GestureDetector(
                       child: Container(
                           height: 70,
-                          width: double.infinity,
+                          width:100.w,
                           decoration: BoxDecoration(
                             color: Colors.grey[200],
-                              borderRadius: BorderRadius.circular(10)
+                            borderRadius: BorderRadius.circular(10)
                           ),
                           child: Row(
                             children: [
                               CircleAvatar(
-                                radius: 30,
-                                backgroundImage: AssetImage('assets/images/whatsapp.jpg'),
-
+                                child: Icon(Icons.phone, size: 30,),
                               ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 8.0),
-                                child: Text("Whatsapp"),
-                              )
+                              const Text('Contact Us On +233 551597865'),
                             ],
                           )
                       ),
                     ),
-                  ),
+
+                    Padding(
+                      padding: const EdgeInsets.only(top: 8.0, bottom: 8.00),
+                      child: GestureDetector(
+                        onTap: _gmailURL,
+                        child: Container(
+                            height:70,
+                            width: 100.w,
+                            decoration: BoxDecoration(
+                              color: Colors.grey[200],
+                                borderRadius: BorderRadius.circular(10)
+                            ),
+                            child: SingleChildScrollView(
+                              scrollDirection: Axis.horizontal,
+                              child: Row(
+                                children: [
+                                 CircleAvatar(
+                                   radius: 30,
+                                   backgroundImage: AssetImage('assets/images/gmailgmail.png'),
+                                 ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(left:8.0),
+                                    child: const Text('mustaphaabdulrahman0245@gmail.com'),
+                                  ),
+                                ],
+                              ),
+                            )
+                        ),
+                      ),
+                    ),
+
+                    GestureDetector(
+                      onTap: _tiktokURL,
+                      child: Container(
+                        height: 70,
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          color: Colors.grey[200],
+                            borderRadius: BorderRadius.circular(10)
+                        ),
+                        child: Row(
+                          children: [
+                            CircleAvatar(
+                              radius: 30,
+                              backgroundImage: AssetImage('assets/images/download.jfif'),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 8.0),
+                              child: const Text('TikTok'),
+                            ),
+                          ],
+                        )
+                      ),
+                    ),
+
+                    Padding(
+                      padding: const EdgeInsets.only(top: 8.0),
+                      child: GestureDetector(
+                        onTap: _whatsappURL,
+                        child: Container(
+                            height: 70,
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              color: Colors.grey[200],
+                                borderRadius: BorderRadius.circular(10)
+                            ),
+                            child: Row(
+                              children: [
+                                CircleAvatar(
+                                  radius: 30,
+                                  backgroundImage: AssetImage('assets/images/whatsapp.jpg'),
+
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 8.0),
+                                  child: Text("Whatsapp"),
+                                )
+                              ],
+                            )
+                        ),
+                      ),
+                    ),
 
 
 
 
-                ],
+                  ],
+                ),
               ),
             ),
           )
