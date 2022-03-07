@@ -1,12 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:pastify/games/Akwaaba/umat%20welcome%20level%20100.dart';
-import 'package:provider/provider.dart';
 
 import 'package:sizer/sizer.dart';
 
-import '../../ad_state.dart';
+
 import '../umat games/umatregistration.dart';
 
 class AkwaabaRegistration extends StatefulWidget {
@@ -38,146 +36,114 @@ class _UmatRegistrationState extends State<AkwaabaRegistration> {
       FirebaseFirestore.instance.collection('UmatAkwaabaB3');
 
 
-  late BannerAd banner;
-  @override
-  void didChangeDependencies(){
-    super.didChangeDependencies();
-    final adState = Provider.of<AdState>(context);
-    adState.initialization.then((status){
-      setState(() {
-        banner = BannerAd(
-          request:AdRequest(),
-          adUnitId: adState.bannerAdUnitId,
-          size: AdSize.banner,
-          listener: adState.listener,
-        )..load();
-      });
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Sizer(builder: (context, orientation, deviceType) {
       return Scaffold(
           body: SingleChildScrollView(
-        child: Column(
-          children: [
-            FutureBuilder(
-              future: _akwaabaregistration.get(),
-              builder: (context, snapshot) {
-                if (snapshot.hasError) {
-                  return Text('${snapshot.error}');
-                }
+        child: FutureBuilder(
+          future: _akwaabaregistration.get(),
+          builder: (context, snapshot) {
+            if (snapshot.hasError) {
+              return Text('${snapshot.error}');
+            }
 
-                if (snapshot.connectionState == ConnectionState.done) {
-                  return Column(
-                    children: [
-                      const Padding(
-                        padding: EdgeInsets.all(15.0),
-                        child: Text(
-                            'Fill in the forms below to complete registration'),
+            if (snapshot.connectionState == ConnectionState.done) {
+              return Column(
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.all(15.0),
+                    child: Text(
+                        'Fill in the forms below to complete registration'),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      height: 7.h,
+                      width: 100.w,
+                      decoration:
+                          BoxDecoration(color: Colors.grey[200]),
+                      child: TextField(
+                        textInputAction: TextInputAction.next,
+                        controller: _controller,
+                        decoration:
+                            const InputDecoration(hintText: 'Players Name'),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          height: 7.h,
-                          width: 100.w,
-                          decoration:
-                              BoxDecoration(color: Colors.grey[200]),
-                          child: TextField(
-                            textInputAction: TextInputAction.next,
-                            controller: _controller,
-                            decoration:
-                                const InputDecoration(hintText: 'Players Name'),
-                          ),
-                        ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: Container(
+                      height: 7.h,
+                      width: 100.w,
+                      decoration:
+                          BoxDecoration(color: Colors.grey[200]),
+                      child: TextField(
+                        textInputAction: TextInputAction.next,
+                        controller: _controllerPhoneNumberUmat,
+                        decoration:
+                            const InputDecoration(hintText: 'Phone Number'),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(15.0),
-                        child: Container(
-                          height: 7.h,
-                          width: 100.w,
-                          decoration:
-                              BoxDecoration(color: Colors.grey[200]),
-                          child: TextField(
-                            textInputAction: TextInputAction.next,
-                            controller: _controllerPhoneNumberUmat,
-                            decoration:
-                                const InputDecoration(hintText: 'Phone Number'),
-                          ),
-                        ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: Container(
+                      height: 7.h,
+                      width: 100.w,
+                      decoration:
+                          BoxDecoration(color: Colors.grey[200]),
+                      child: TextField(
+                        textInputAction: TextInputAction.next,
+                        controller: _controllerResidentUmat,
+                        decoration: const InputDecoration(
+                            hintText: 'Hostel/Halls Name/Resident'),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(15.0),
-                        child: Container(
-                          height: 7.h,
-                          width: 100.w,
-                          decoration:
-                              BoxDecoration(color: Colors.grey[200]),
-                          child: TextField(
-                            textInputAction: TextInputAction.next,
-                            controller: _controllerResidentUmat,
-                            decoration: const InputDecoration(
-                                hintText: 'Hostel/Halls Name/Resident'),
-                          ),
-                        ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: Container(
+                      height: 7.h,
+                      width: 100.w,
+                      decoration:
+                          BoxDecoration(color: Colors.grey[200]),
+                      child: TextField(
+                        textInputAction: TextInputAction.next,
+                        controller: _controllerClubNameUmat,
+                        decoration:
+                            const InputDecoration(hintText: 'Club Name'),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(15.0),
-                        child: Container(
-                          height: 7.h,
-                          width: 100.w,
-                          decoration:
-                              BoxDecoration(color: Colors.grey[200]),
-                          child: TextField(
-                            textInputAction: TextInputAction.next,
-                            controller: _controllerClubNameUmat,
-                            decoration:
-                                const InputDecoration(hintText: 'Club Name'),
-                          ),
-                        ),
-                      ),
-                      const Text(
-                          'Please Check whether the team has been registered here!!'),
-                      ElevatedButton(
-                        child: const Text('REGISTERED TEAMS'),
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      UmatRegisteredTeams()));
-                        },
-                      ),
-                      ElevatedButton(
-                          onPressed: () {
-                            _umatChampionsLeagueRegistration();
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        AkwaabaRegistrationDone()));
-                          },
-                          child: const Text('Done')),
-                    ],
-                  );
-                }
+                    ),
+                  ),
+                  const Text(
+                      'Please Check whether the team has been registered here!!'),
+                  ElevatedButton(
+                    child: const Text('REGISTERED TEAMS'),
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  UmatRegisteredTeams()));
+                    },
+                  ),
+                  ElevatedButton(
+                      onPressed: () {
+                        _umatChampionsLeagueRegistration();
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    AkwaabaRegistrationDone()));
+                      },
+                      child: const Text('Done')),
+                ],
+              );
+            }
 
-                return const Center(child: const CircularProgressIndicator());
-              },
-            ),
-
-            if(banner ==null)
-              SizedBox(
-                height: 50,
-              )
-
-            else Container(
-              height: 70,
-              child: AdWidget(ad: banner,),
-
-            )
-          ],
+            return const Center(child: const CircularProgressIndicator());
+          },
         ),
       ));
     });

@@ -1,10 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
-import '../ad_state.dart';
+
 
 class NewsDetails extends StatefulWidget {
   String newsId;
@@ -21,22 +20,6 @@ class _NewsDetailsState extends State<NewsDetails> {
   final CollectionReference _news =
   FirebaseFirestore.instance.collection('Pastify News');
 
-  late BannerAd banner;
-  @override
-  void didChangeDependencies(){
-    super.didChangeDependencies();
-    final adState = Provider.of<AdState>(context);
-    adState.initialization.then((status){
-      setState(() {
-        banner = BannerAd(
-          request:AdRequest(),
-          adUnitId: adState.bannerAdUnitId,
-          size: AdSize.banner,
-          listener: adState.listener,
-        )..load();
-      });
-    });
-  }
 
 
   @override
@@ -44,11 +27,6 @@ class _NewsDetailsState extends State<NewsDetails> {
     return Sizer(builder: (context, orientation,deviceType){
       return Scaffold(
         extendBodyBehindAppBar: false,
-        bottomNavigationBar: Container(
-          height: 70,
-          child: AdWidget(ad: banner,),
-
-        ),
 
         appBar: AppBar(
           elevation: 0.0,

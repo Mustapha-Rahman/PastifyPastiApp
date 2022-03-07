@@ -1,29 +1,20 @@
-
+//ca-app-pub-7039001693169695/3968089037
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'package:pastify/ad_state.dart';
+
 
 import 'package:pastify/screens/landingpage.dart';
-import 'package:provider/provider.dart';
 
 
 import 'package:sizer/sizer.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  final initFuture = MobileAds.instance.initialize();
-  final adState = AdState(initFuture);
-
-
-
+  MobileAds.instance.initialize();
 
   runApp(
-  Provider.value(
-      value: adState,
-    builder: (context, child)=>Pastify(),
-  ),
-
+    Pastify(),
   );
 }
 

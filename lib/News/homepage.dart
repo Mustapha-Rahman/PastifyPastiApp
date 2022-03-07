@@ -1,10 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
-import '../ad_state.dart';
+
 import 'details.dart';
 
 class NewsHomePage extends StatefulWidget {
@@ -27,22 +26,33 @@ class _NewsHomePageState extends State<NewsHomePage> {
   final CollectionReference _loading =
   FirebaseFirestore.instance.collection('Loading');
 
-  late BannerAd banner;
+   BannerAd? bannerAd;
+   bool isLoaded=false;
   @override
-  void didChangeDependencies(){
+  void didChangeDependencies() {
+    // TODO: implement didChangeDependencies
     super.didChangeDependencies();
-    final adState = Provider.of<AdState>(context);
-    adState.initialization.then((status){
-      setState(() {
-        banner = BannerAd(
-          request:AdRequest(),
-          adUnitId: adState.bannerAdUnitId,
-          size: AdSize.banner,
-          listener: adState.listener,
-        )..load();
-      });
-    });
+    bannerAd=BannerAd(
+        size: AdSize.banner,
+        adUnitId: "ca-app-pub-7039001693169695/3968089037",
+        listener: BannerAdListener(
+          onAdLoaded: (ad){
+            setState(() {
+              isLoaded=true;
+            });
+            print("Banner ad Loaded");
+          },
+
+          onAdFailedToLoad: (ad, error){
+            ad.dispose();
+
+          }
+        ),
+        request: AdRequest()
+    );
+    bannerAd!.load();
   }
+
 
 
   @override
@@ -50,12 +60,6 @@ class _NewsHomePageState extends State<NewsHomePage> {
     return Sizer(builder: (context, orientation, deviceType){
       return Scaffold(
         extendBodyBehindAppBar: true,
-        bottomNavigationBar: Container(
-          height: 70,
-          child: AdWidget(ad: banner,),
-
-        ),
-
           appBar: AppBar(
             backgroundColor: Colors.blue,
             elevation: 0.0,
@@ -69,7 +73,6 @@ class _NewsHomePageState extends State<NewsHomePage> {
               ],
             ),
           ),
-
 
           body: SafeArea(
             child: FutureBuilder<QuerySnapshot>(
@@ -86,7 +89,12 @@ class _NewsHomePageState extends State<NewsHomePage> {
                       return Column(
                         children: [
 
-
+                          isLoaded?Container(
+                            height: 70,
+                            child: AdWidget(
+                                ad: bannerAd!
+                            ),
+                          ):SizedBox(),
 
                           const Text('Popular Facts', style: TextStyle(
                             fontWeight: FontWeight.bold

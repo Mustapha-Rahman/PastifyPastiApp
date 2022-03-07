@@ -1,12 +1,10 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'package:pastify/ad_state.dart';
+
 import 'package:pastify/games/Akwaaba/umat%20welcome%20level%20100.dart';
 import 'package:pastify/games/umat%20games/details.dart';
 import 'package:pastify/games/umat%20games/umatregistration.dart';
-import 'package:provider/provider.dart';
 
 import 'package:sizer/sizer.dart';
 
@@ -21,30 +19,13 @@ class RegulationsAkwaaba extends StatefulWidget {
 }
 
 class _RegulationsAkwaabaState extends State<RegulationsAkwaaba> {
-  late BannerAd banner;
-  @override
-  void didChangeDependencies(){
-    super.didChangeDependencies();
-    final adState = Provider.of<AdState>(context);
-    adState.initialization.then((status){
-      setState(() {
-        banner = BannerAd(
-          request:AdRequest(),
-          adUnitId: adState.bannerAdUnitId,
-          size: AdSize.banner,
-          listener: adState.listener,
-        )..load();
-      });
-    });
-  }
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: Container(
-        height: 70,
-        child: AdWidget(ad: banner,),
 
-      ),
       appBar: AppBar(
         backgroundColor: Colors.black,
         title: const Text("Competitions Regulations"),
@@ -97,32 +78,11 @@ class AssistRankingAkaaba extends StatefulWidget {
 class _AssistRankingAkaabaState extends State<AssistRankingAkaaba> {
   final CollectionReference _akwaabaassistranking =
       FirebaseFirestore.instance.collection('Akwaabaassist');
-  late BannerAd banner;
-  @override
-  void didChangeDependencies(){
-    super.didChangeDependencies();
-    final adState = Provider.of<AdState>(context);
-    adState.initialization.then((status){
-      setState(() {
-        banner = BannerAd(
-          request:AdRequest(),
-          adUnitId: adState.bannerAdUnitId,
-          size: AdSize.banner,
-          listener: adState.listener,
-        )..load();
-      });
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
     return Sizer(builder: (context, orientation, deviceType) {
       return Scaffold(
-          bottomNavigationBar: Container(
-            height: 70,
-            child: AdWidget(ad: banner,),
-
-          ),
 
           extendBodyBehindAppBar: true,
           appBar: AppBar(
@@ -210,33 +170,12 @@ class GoalRankingAkwaaba extends StatefulWidget {
 class _GoalRankingAkwaabaState extends State<GoalRankingAkwaaba> {
   final CollectionReference _akwaabagoalranking =
       FirebaseFirestore.instance.collection('AkwaabaGoalRanking');
-  late BannerAd banner;
-  @override
-  void didChangeDependencies(){
-    super.didChangeDependencies();
-    final adState = Provider.of<AdState>(context);
-    adState.initialization.then((status){
-      setState(() {
-        banner = BannerAd(
-          request:AdRequest(),
-          adUnitId: adState.bannerAdUnitId,
-          size: AdSize.banner,
-          listener: adState.listener,
-        )..load();
-      });
-    });
-  }
 
 
   @override
   Widget build(BuildContext context) {
     return Sizer(builder: (context, orientation, deviceType) {
       return Scaffold(
-          bottomNavigationBar: Container(
-            height: 70,
-            child: AdWidget(ad: banner,),
-
-          ),
 
           extendBodyBehindAppBar: true,
           appBar: AppBar(
@@ -328,34 +267,12 @@ class _AssistRankingUmatState extends State<AssistRankingUmat> {
 
   final CollectionReference _umatassistranking =
   FirebaseFirestore.instance.collection('Season1Assist');
-  late BannerAd banner;
-  @override
-  void didChangeDependencies(){
-    super.didChangeDependencies();
-    final adState = Provider.of<AdState>(context);
-    adState.initialization.then((status){
-      setState(() {
-        banner = BannerAd(
-          request:AdRequest(),
-          adUnitId: adState.bannerAdUnitId,
-          size: AdSize.banner,
-          listener: adState.listener,
-        )..load();
-      });
-    });
-  }
 
 
   @override
   Widget build(BuildContext context) {
     return Sizer(builder: (context, orientation, deviceType) {
       return Scaffold(
-
-          bottomNavigationBar: Container(
-            height: 70,
-            child: AdWidget(ad: banner,),
-
-          ),
           extendBodyBehindAppBar: true,
           appBar: AppBar(
             elevation: 0.0,
@@ -443,22 +360,6 @@ class GoalRankingUmat extends StatefulWidget {
 class _GoalRankingUmatState extends State<GoalRankingUmat> {
   final CollectionReference _umatgoalsranking =
   FirebaseFirestore.instance.collection('Season1Goals');
-  late BannerAd banner;
-  @override
-  void didChangeDependencies(){
-    super.didChangeDependencies();
-    final adState = Provider.of<AdState>(context);
-    adState.initialization.then((status){
-      setState(() {
-        banner = BannerAd(
-          request:AdRequest(),
-          adUnitId: adState.bannerAdUnitId,
-          size: AdSize.banner,
-          listener: adState.listener,
-        )..load();
-      });
-    });
-  }
 
 
 
@@ -467,11 +368,7 @@ class _GoalRankingUmatState extends State<GoalRankingUmat> {
   Widget build(BuildContext context) {
     return Sizer(builder: (context, orientation, deviceType) {
       return Scaffold(
-          bottomNavigationBar: Container(
-            height: 70,
-            child: AdWidget(ad: banner,),
 
-          ),
 
           extendBodyBehindAppBar: true,
           appBar: AppBar(
@@ -564,36 +461,6 @@ class _HomePageGamesState extends State<HomePageGames> {
   final CollectionReference _homepagegames =
   FirebaseFirestore.instance.collection('umatStandingsGroup1');
 
-  late BannerAd banner;
-  @override
-  void didChangeDependencies(){
-    super.didChangeDependencies();
-    final adState = Provider.of<AdState>(context);
-    adState.initialization.then((status){
-      setState(() {
-        banner = BannerAd(
-            request:AdRequest(),
-            adUnitId: adState.bannerAdUnitId,
-          size: AdSize.banner,
-          listener: adState.listener,
-        )..load();
-      });
-    });
-  }
-
-  /*
-  if(banner ==null)
-                                                  SizedBox(
-                                                    height: 50,
-                                                  )
-
-                                                else Container(
-                                                  height: 70,
-                                                  child: AdWidget(ad: banner,),
-
-                                                )
-   */
-
 
   @override
   Widget build(BuildContext context) {
@@ -673,120 +540,104 @@ class _HomePageGamesState extends State<HomePageGames> {
                                             contentPadding:
                                             const EdgeInsets.all(20.0),
                                             content: Column(
-                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                               children: [
-                                                Column(
-                                                  children: [
-                                                    GestureDetector(
-                                                        onTap: () {
-                                                          Navigator.push(
-                                                              context,
-                                                              MaterialPageRoute(
-                                                                  builder:
-                                                                      (context) =>
-                                                                  const UmatAkwaabaCompetitionDetails()));
-                                                        },
-                                                        child: const Text(
-                                                            "KnockOut Phase")),
+                                                GestureDetector(
+                                                    onTap: () {
+                                                      Navigator.push(
+                                                          context,
+                                                          MaterialPageRoute(
+                                                              builder:
+                                                                  (context) =>
+                                                              const UmatAkwaabaCompetitionDetails()));
+                                                    },
+                                                    child: const Text(
+                                                        "KnockOut Phase")),
 
-                                                    Container(
-                                                      height: 2,
-                                                      width: 100.w,
-                                                      color: Colors.grey,
-                                                    ),
-                                                    SizedBox(
-                                                      height: 20,
-                                                      width: 100.w,
-                                                    ),
-                                                    GestureDetector(
-                                                        onTap: () {
-                                                          Navigator.push(
-                                                              context,
-                                                              MaterialPageRoute(
-                                                                  builder:
-                                                                      (context) =>
-                                                                      UmatRegistration()));
-                                                          },
-                                                        child: const Text(
-                                                            "Registration")),
-                                                    Container(
-                                                      height: 2,
-                                                      width: 100.w,
-                                                      color: Colors.grey,
-                                                    ),
-                                                    SizedBox(
-                                                      height: 20,
-                                                      width: 100.w,
-                                                    ),
-                                                    GestureDetector(
-                                                        onTap: () {
-                                                          Navigator.push(
-                                                              context,
-                                                              MaterialPageRoute(
-                                                                  builder:
-                                                                      (context) =>
-                                                                  const GoalRankingAkwaaba()));
-                                                        },
-                                                        child: const Text(
-                                                            "Goal Ranking")),
-                                                    Container(
-                                                      height: 2,
-                                                      width: 100.w,
-                                                      color: Colors.grey,
-                                                    ),
-                                                    SizedBox(
-                                                      height: 20,
-                                                      width: 100.w,
-                                                    ),
-                                                    GestureDetector(
-                                                        onTap: () {
-                                                          Navigator.push(
-                                                              context,
-                                                              MaterialPageRoute(
-                                                                  builder:
-                                                                      (context) =>
-                                                                  const AssistRankingAkaaba()));
-                                                        },
-                                                        child: const Text(
-                                                            "Assist Ranking")),
-                                                    Container(
-                                                      height: 2,
-                                                      width: 100.w,
-                                                      color: Colors.grey,
-                                                    ),
-                                                    SizedBox(
-                                                      height: 20,
-                                                      width: 100.w,
-                                                    ),
-                                                    GestureDetector(
-                                                        onTap: () {
-                                                          Navigator.push(
-                                                              context,
-                                                              MaterialPageRoute(
-                                                                  builder:
-                                                                      (context) =>
-                                                                  const RegulationsAkwaaba()));
-                                                        },
-                                                        child: const Text(
-                                                            "Regulations")),
-                                                    Container(
-                                                      height: 2,
-                                                      width: 100.w,
-                                                      color: Colors.grey,
-                                                    ),
-                                                  ],
+                                                Container(
+                                                  height: 2,
+                                                  width: 100.w,
+                                                  color: Colors.grey,
                                                 ),
-
-                                                if(banner ==null)
-                                                  SizedBox(
-                                                    height: 50,
-                                                  )
-
-                                                else Container(
-                                                  height: 70,
-                                                  child: AdWidget(ad: banner,),
-
-                                                )
+                                                SizedBox(
+                                                  height: 20,
+                                                  width: 100.w,
+                                                ),
+                                                GestureDetector(
+                                                    onTap: () {
+                                                      Navigator.push(
+                                                          context,
+                                                          MaterialPageRoute(
+                                                              builder:
+                                                                  (context) =>
+                                                                  UmatRegistration()));
+                                                      },
+                                                    child: const Text(
+                                                        "Registration")),
+                                                Container(
+                                                  height: 2,
+                                                  width: 100.w,
+                                                  color: Colors.grey,
+                                                ),
+                                                SizedBox(
+                                                  height: 20,
+                                                  width: 100.w,
+                                                ),
+                                                GestureDetector(
+                                                    onTap: () {
+                                                      Navigator.push(
+                                                          context,
+                                                          MaterialPageRoute(
+                                                              builder:
+                                                                  (context) =>
+                                                              const GoalRankingAkwaaba()));
+                                                    },
+                                                    child: const Text(
+                                                        "Goal Ranking")),
+                                                Container(
+                                                  height: 2,
+                                                  width: 100.w,
+                                                  color: Colors.grey,
+                                                ),
+                                                SizedBox(
+                                                  height: 20,
+                                                  width: 100.w,
+                                                ),
+                                                GestureDetector(
+                                                    onTap: () {
+                                                      Navigator.push(
+                                                          context,
+                                                          MaterialPageRoute(
+                                                              builder:
+                                                                  (context) =>
+                                                              const AssistRankingAkaaba()));
+                                                    },
+                                                    child: const Text(
+                                                        "Assist Ranking")),
+                                                Container(
+                                                  height: 2,
+                                                  width: 100.w,
+                                                  color: Colors.grey,
+                                                ),
+                                                SizedBox(
+                                                  height: 20,
+                                                  width: 100.w,
+                                                ),
+                                                GestureDetector(
+                                                    onTap: () {
+                                                      Navigator.push(
+                                                          context,
+                                                          MaterialPageRoute(
+                                                              builder:
+                                                                  (context) =>
+                                                              const RegulationsAkwaaba()));
+                                                    },
+                                                    child: const Text(
+                                                        "Regulations")),
+                                                Container(
+                                                  height: 2,
+                                                  width: 100.w,
+                                                  color: Colors.grey,
+                                                ),
                                               ],
                                             ),
                                           ));
@@ -852,128 +703,112 @@ class _HomePageGamesState extends State<HomePageGames> {
                                               contentPadding:
                                               const EdgeInsets.all(20.0),
                                               content: Column(
-                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                 children: [
-                                                  Column(
-                                                    children: [
-                                                      GestureDetector(
-                                                          onTap: () {
-                                                            Navigator.push(
-                                                                context,
-                                                                MaterialPageRoute(
-                                                                    builder:
-                                                                        (context) =>
-                                                                    const Details()));
-                                                          },
-                                                          child: const Text(
-                                                              "Competition Details")),
-                                                      Container(
-                                                        height: 2,
-                                                        width: 100.w,
-                                                        color: Colors.grey,
-                                                      ),
-                                                      SizedBox(
-                                                        height: 20,
-                                                        width: 100.w,
-                                                      ),
-
-                                                      GestureDetector(
-                                                          onTap: () {
-                                                            Navigator.push(
-                                                                context,
-                                                                MaterialPageRoute(
-                                                                    builder:
-                                                                        (context) =>
-                                                                        UmatRegistration()));
-                                                          },
-                                                          child: const Text(
-                                                              "Registration")),
-                                                      Container(
-                                                        height: 2,
-                                                        width: 100.w,
-                                                        color: Colors.grey,
-                                                      ),
-                                                      SizedBox(
-                                                        height: 20,
-                                                        width: 100.w,
-                                                      ),
-
-                                                      GestureDetector(
-                                                          onTap: () {
-                                                            Navigator.push(
-                                                                context,
-                                                                MaterialPageRoute(
-                                                                    builder:
-                                                                        (context) =>
-                                                                    const GoalRankingUmat()));
-                                                          },
-                                                          child: const Text(
-                                                              "Goal Ranking")),
-                                                      Container(
-                                                        height: 2,
-                                                        width: 100.w,
-                                                        color: Colors.grey,
-                                                      ),
-                                                      SizedBox(
-                                                        height: 20,
-                                                        width: 100.w,
-                                                      ),
-
-                                                      GestureDetector(
-                                                          onTap: () {
-                                                            Navigator.push(
-                                                                context,
-                                                                MaterialPageRoute(
-                                                                    builder:
-                                                                        (context) =>
-                                                                    const AssistRankingUmat()));
-                                                          },
-                                                          child: const Text(
-                                                              "Assist Ranking")),
-                                                      Container(
-                                                        height: 2,
-                                                        width: 100.w,
-                                                        color: Colors.grey,
-                                                      ),
-                                                      SizedBox(
-                                                        height: 20,
-                                                        width: 100.w,
-                                                      ),
-
-                                                      GestureDetector(
-                                                          onTap: () {
-                                                            Navigator.push(
-                                                                context,
-                                                                MaterialPageRoute(
-                                                                    builder:
-                                                                        (context) =>
-                                                                    const RegulationsAkwaaba()));
-                                                          },
-                                                          child: const Text(
-                                                              "Regulations")),
-                                                      Container(
-                                                        height: 2,
-                                                        width: 100.w,
-                                                        color: Colors.grey,
-                                                      ),
-                                                      SizedBox(
-                                                        height: 20,
-                                                        width: 100.w,
-                                                      ),
-
-                                                    ],
+                                                  GestureDetector(
+                                                      onTap: () {
+                                                        Navigator.push(
+                                                            context,
+                                                            MaterialPageRoute(
+                                                                builder:
+                                                                    (context) =>
+                                                                const Details()));
+                                                      },
+                                                      child: const Text(
+                                                          "Competition Details")),
+                                                  Container(
+                                                    height: 2,
+                                                    width: 100.w,
+                                                    color: Colors.grey,
+                                                  ),
+                                                  SizedBox(
+                                                    height: 20,
+                                                    width: 100.w,
                                                   ),
 
-                                                  if(banner ==null)
-                                                    SizedBox(
-                                                      height: 50,
-                                                    )
+                                                  GestureDetector(
+                                                      onTap: () {
+                                                        Navigator.push(
+                                                            context,
+                                                            MaterialPageRoute(
+                                                                builder:
+                                                                    (context) =>
+                                                                    UmatRegistration()));
+                                                      },
+                                                      child: const Text(
+                                                          "Registration")),
+                                                  Container(
+                                                    height: 2,
+                                                    width: 100.w,
+                                                    color: Colors.grey,
+                                                  ),
+                                                  SizedBox(
+                                                    height: 20,
+                                                    width: 100.w,
+                                                  ),
 
-                                                  else Container(
-                                                    height: 70,
-                                                    child: AdWidget(ad: banner,),
+                                                  GestureDetector(
+                                                      onTap: () {
+                                                        Navigator.push(
+                                                            context,
+                                                            MaterialPageRoute(
+                                                                builder:
+                                                                    (context) =>
+                                                                const GoalRankingUmat()));
+                                                      },
+                                                      child: const Text(
+                                                          "Goal Ranking")),
+                                                  Container(
+                                                    height: 2,
+                                                    width: 100.w,
+                                                    color: Colors.grey,
+                                                  ),
+                                                  SizedBox(
+                                                    height: 20,
+                                                    width: 100.w,
+                                                  ),
 
-                                                  )
+                                                  GestureDetector(
+                                                      onTap: () {
+                                                        Navigator.push(
+                                                            context,
+                                                            MaterialPageRoute(
+                                                                builder:
+                                                                    (context) =>
+                                                                const AssistRankingUmat()));
+                                                      },
+                                                      child: const Text(
+                                                          "Assist Ranking")),
+                                                  Container(
+                                                    height: 2,
+                                                    width: 100.w,
+                                                    color: Colors.grey,
+                                                  ),
+                                                  SizedBox(
+                                                    height: 20,
+                                                    width: 100.w,
+                                                  ),
+
+                                                  GestureDetector(
+                                                      onTap: () {
+                                                        Navigator.push(
+                                                            context,
+                                                            MaterialPageRoute(
+                                                                builder:
+                                                                    (context) =>
+                                                                const RegulationsAkwaaba()));
+                                                      },
+                                                      child: const Text(
+                                                          "Regulations")),
+                                                  Container(
+                                                    height: 2,
+                                                    width: 100.w,
+                                                    color: Colors.grey,
+                                                  ),
+                                                  SizedBox(
+                                                    height: 20,
+                                                    width: 100.w,
+                                                  ),
+
                                                 ],
                                               ),
                                             ));
